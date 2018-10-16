@@ -1,0 +1,12 @@
+name: grinder_task_builder_config
+
+dependencies:
+  build_cli_annotations: any
+  json_annotation: ^1.1.0
+  collection: any
+  yaml: any
+
+dev_dependencies:
+  json_serializable: ^1.2.0
+  build_cli: any
+  build_runner: ^0.10.0
