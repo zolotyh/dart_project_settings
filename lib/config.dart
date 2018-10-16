@@ -26,10 +26,24 @@ class Config implements IConfig{
   Map<String, dynamic> toJson() => _$ConfigToJson(this);
 }
 
-abstract class IConfig {
-  Config fromArguments(List<String> args);
-  Config fromJson(Map<String, dynamic> json);
-  Map<String, dynamic> toJson();
+
+@JsonSerializable()
+@CliOptions()
+class Config2 implements IConfig{
+  @CliOption(help: 'output')
+  @JsonKey(nullable: true)
+  final String hello;
+
+
+  Config2([this.hello]);
+
+  Config2 fromArguments(List<String> args) => parseConfig2(args);
+  Config2 fromJson(Map<String, dynamic> json) => _$Config2FromJson(json);
+  Map<String, dynamic> toJson() => _$Config2ToJson(this);
 }
 
-
+abstract class IConfig {
+  IConfig fromArguments(List<String> args);
+  IConfig fromJson(Map<String, dynamic> json);
+  Map<String, dynamic> toJson();
+}

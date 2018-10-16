@@ -23,6 +23,19 @@ Config parseConfig(List<String> args) {
   return _$parseConfigResult(result);
 }
 
+Config2 _$parseConfig2Result(ArgResults result) =>
+    new Config2(result['hello'] as String);
+
+ArgParser _$populateConfig2Parser(ArgParser parser) =>
+    parser..addOption('hello', help: 'output');
+
+final _$parserForConfig2 = _$populateConfig2Parser(new ArgParser());
+
+Config2 parseConfig2(List<String> args) {
+  var result = _$parserForConfig2.parse(args);
+  return _$parseConfig2Result(result);
+}
+
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
@@ -39,3 +52,10 @@ Map<String, dynamic> _$ConfigToJson(Config instance) => <String, dynamic>{
       'output': instance.output,
       'dart2js': instance.dart2js
     };
+
+Config2 _$Config2FromJson(Map<String, dynamic> json) {
+  return Config2(json['hello'] as String);
+}
+
+Map<String, dynamic> _$Config2ToJson(Config2 instance) =>
+    <String, dynamic>{'hello': instance.hello};
